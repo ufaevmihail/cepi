@@ -1,0 +1,1 @@
+import{on as e}from"./CanvasPool--v5prlt4.js";import{t}from"./init-DkEewMnR.js";import{n,t as r}from"./index-DM_t5QkI.js";e((()=>{r(),n(),t()}))();

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>симулятор электрических цепей</title>
-      <script type="module" crossorigin src="/cepi/assets/index-DtHwxCxL.js"></script>
+      <script type="module" crossorigin src="/cepi/assets/index-w-NSmx_q.js"></script>
       <link rel="modulepreload" crossorigin href="/cepi/assets/CanvasPool--v5prlt4.js">
       <link rel="modulepreload" crossorigin href="/cepi/assets/canvasUtils-CVbFN9-F.js">
       <link rel="modulepreload" crossorigin href="/cepi/assets/RenderTargetSystem-C-z1wwb_.js">
@@ -12,13 +12,13 @@
       <link rel="stylesheet" crossorigin href="/cepi/assets/index-CnsZ1jie.css">
     </head>
     <body>	    
-        <div class="simulator-layout" style="display: flex; flex-direction: row; gap: 20px; font-family: sans-serif; padding: 15px; background-color: #f0f0f0; width: fit-content; align-items: flex-start;">
+        <div class="simulator-layout" style="display: flex; flex-direction: row; gap: 20px; font-family: sans-serif; padding: 8px; background-color: #ffffff; width: fit-content; align-items: flex-start;">
     
     <!-- СЛЕВА: Контейнер для холста PixiJS (ваш canvas добавится сюда скриптом) -->
     <div id="myCanvas" style="border: 2px solid #bdc3c7; border-radius: 8px; overflow: hidden; line-height: 0;"></div>
 
     <!-- СПРАВА: Панель добавления элементов -->
-    <div class="control-panel" style="width: 280px; padding: 20px; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #e2e8f0;">
+    <div class="control-panel" style="width: 280px; padding: 10px;padding-bottom: 0; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #e2e8f0;">
         <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 8px; font-size: 18px;">Добавить элемент</h3>
         
         <!-- Выбор типа элемента -->
@@ -41,15 +41,15 @@
         <button id="add-elem-btn" style="width: 100%; padding: 10px; background: #3498db; color: #fff; border: none; border-radius: 4px; font-size: 15px; font-weight: bold; cursor: pointer; transition: background 0.2s;">
             Создать
         </button>
-	<div class="simulation-time-panel" style="margin-top: 25px; border-top: 2px solid #ecf0f1; padding-top: 15px; margin-bottom: 15px;">
+	<div class="simulation-time-panel" style="margin-top: 25px; border-top: 2px solid #ecf0f1; padding-top: 10px; margin-bottom: 5px;">
 			<h4 style="margin-top: 0; color: #2c3e50; font-size: 15px; margin-bottom: 10px;">Время симуляции</h4>
 			<div class="form-group">
-				<label for="sim-time-input" style="display: block; margin-bottom: 5px; font-weight: bold; color: #7f8c8d; font-size: 12px;">Значение (например, 0.2 или 5t):</label>
+				<label for="sim-time-input" style="display: block; margin-bottom: 3px; font-weight: bold; color: #7f8c8d; font-size: 12px;">Значение (например, 0.2 или 5t):</label>
 				<input type="text" id="sim-time-input" value="10t" style="width: 92%; padding: 8px; border: 1px solid #bdc3c7; border-radius: 4px; font-size: 14px;" />
-				<label for="elem-type" style="display: block; margin-bottom: 5px; font-weight: bold; color: #7f8c8d; font-size: 13px;">t-постоянная контура (вычислена условно - самая маленькая из возможных комбинаций)<label>
-				<label for="elem-type" style="display: block; margin-bottom: 5px; font-weight: bold; color: #7f8c8d; font-size: 13px;">клик левой кнопкой мышки на узел - тащить его<label>
-				<label for="elem-type" style="display: block; margin-bottom: 5px; font-weight: bold; color: #7f8c8d; font-size: 13px;">клик правой кнопкой мышки на элемент - удалить его<label>
-				<label for="elem-type" style="display: block; margin-bottom: 5px; font-weight: bold; color: #7f8c8d; font-size: 13px;">клик левой кнопкой мышки на элемент (после расчета цепи) - смотреть его осциллограмму<label>
+				<label for="elem-type" style="display: block; margin-bottom: 3px; font-weight: bold; color: #7f8c8d; font-size: 13px;">t-постоянная контура (вычислена условно - самая маленькая из возможных)<label>
+				<label for="elem-type" style="display: block; margin-bottom: 3px; font-weight: bold; color: #7f8c8d; font-size: 13px;">клик левой кнопкой мышки на узел - тащить его<label>
+				<label for="elem-type" style="display: block; margin-bottom: 3px; font-weight: bold; color: #7f8c8d; font-size: 13px;">клик правой кнопкой мышки на элемент - удалить его<label>
+				<label for="elem-type" style="display: block; margin-bottom: 0; font-weight: bold; color: #7f8c8d; font-size: 13px;">клик левой кнопкой мышки на элемент (после расчета цепи) - смотреть его осциллограмму<label>
 			</div>
 		</div>
     </div>
@@ -57,8 +57,9 @@
 </div>
         <button onclick="raschitat()">Расчитать</button>	
 		<button onclick="sbros()">Сброс</button>
-		
-		<div id="chart-container"></div>
-		<div id="chart-container1"></div>		
+		<div style="display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; gap: 15px;">
+			<div id="chart-container" style="display: inline-block !important; width: auto !important;"></div>
+			<div id="chart-container1" style="display: inline-block !important; width: auto !important;"></div>
+		</div>
     </body>
 </html>
